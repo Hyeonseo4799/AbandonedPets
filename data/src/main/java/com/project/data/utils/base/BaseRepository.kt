@@ -1,4 +1,4 @@
-package com.project.data.utils
+package com.project.data.utils.base
 
 import android.util.Log
 import kotlinx.coroutines.Dispatchers
