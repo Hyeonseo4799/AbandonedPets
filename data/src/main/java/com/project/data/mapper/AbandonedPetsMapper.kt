@@ -4,48 +4,46 @@ import com.project.data.model.AbandonedPetsResponse
 import com.project.domain.model.AbandonedPets
 
 object AbandonedPetsMapper {
-    fun mapperToAbandonedPets(abandonedPetsResponse: AbandonedPetsResponse?): AbandonedPets? {
-        if (abandonedPetsResponse != null) {
-            return AbandonedPets(
-                happenDate = abandonedPetsResponse.happenDate,
-                petImg = abandonedPetsResponse.petImg,
-                petType = abandonedPetsResponse.petType,
-                petColor = abandonedPetsResponse.petColor,
-                petAge = abandonedPetsResponse.petAge,
-                petWeight = abandonedPetsResponse.petWeight,
-                noticeNo = abandonedPetsResponse.noticeNo,
-                noticeStartDate = abandonedPetsResponse.noticeStartDate,
-                noticeEndDate = abandonedPetsResponse.noticeEndDate,
-                processState = abandonedPetsResponse.processState,
-                petGender = abandonedPetsResponse.petGender,
-                neuterState = abandonedPetsResponse.neuterState,
-                specialFeature = abandonedPetsResponse.specialFeature,
-                shelterName = abandonedPetsResponse.shelterName,
-                shelterTel = abandonedPetsResponse.shelterTel,
-                shelterAddr = abandonedPetsResponse.shelterAddr
-            )
-        } else
-            return null
+    fun mapperToAbandonedPets(abandonedPetsResponse: AbandonedPetsResponse): List<AbandonedPets> {
+        return abandonedPetsResponse.response.body.items.item.map {
+            AbandonedPets(
+                happenDate = it.happenDt,
+                petImg = it.filename,
+                petType = it.kindCd,
+                petColor = it.colorCd,
+                petAge = it.age,
+                petWeight = it.weight,
+                noticeNo = it.noticeNo,
+                noticeStartDate = it.noticeSdt,
+                noticeEndDate = it.noticeEdt,
+                processState = it.processState,
+                petGender = it.sexCd,
+                neuterState = it.neuterYn,
+                specialFeature = it.specialMark,
+                shelterName = it.careNm,
+                shelterTel = it.careTel,
+                shelterAddr = it.careAddr)
+        }
     }
 
-    fun mapperToAbandonedPetsResponse(abandonedPets: AbandonedPets): AbandonedPetsResponse {
-        return AbandonedPetsResponse(
-            happenDate = abandonedPets.happenDate,
-            petImg = abandonedPets.petImg,
-            petType = abandonedPets.petType,
-            petColor = abandonedPets.petColor,
-            petAge = abandonedPets.petAge,
-            petWeight = abandonedPets.petWeight,
-            noticeNo = abandonedPets.noticeNo,
-            noticeStartDate = abandonedPets.noticeStartDate,
-            noticeEndDate = abandonedPets.noticeEndDate,
-            processState = abandonedPets.processState,
-            petGender = abandonedPets.petGender,
-            neuterState = abandonedPets.neuterState,
-            specialFeature = abandonedPets.specialFeature,
-            shelterName = abandonedPets.shelterName,
-            shelterTel = abandonedPets.shelterTel,
-            shelterAddr = abandonedPets.shelterAddr
-        )
-    }
+//    fun mapperToItem(abandonedPets: AbandonedPets): Item {
+//        return Item(
+//            happenDt = abandonedPets.happenDate,
+//            filename = abandonedPets.petImg,
+//            kindCd = abandonedPets.petType,
+//            colorCd = abandonedPets.petColor,
+//            age = abandonedPets.petAge,
+//            weight = abandonedPets.petWeight,
+//            noticeNo = abandonedPets.noticeNo,
+//            noticeSdt = abandonedPets.noticeStartDate,
+//            noticeEdt = abandonedPets.noticeEndDate,
+//            processState = abandonedPets.processState,
+//            sexCd = abandonedPets.petGender,
+//            neuterYn = abandonedPets.neuterState,
+//            specialMark = abandonedPets.specialFeature,
+//            careNm = abandonedPets.shelterName,
+//            careTel = abandonedPets.shelterTel,
+//            careAddr = abandonedPets.shelterAddr
+//        )
+//    }
 }
