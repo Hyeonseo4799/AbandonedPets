@@ -6,11 +6,6 @@ import kotlinx.coroutines.withContext
 import java.lang.Exception
 
 open class BaseRepository {
-    sealed class Result<out T : Any> {
-        data class Success<out T : Any>(val data: T) : Result<T>()
-        data class Error(val exception: String) : Result<Nothing>()
-    }
-
     suspend inline fun <T> safeApiCall(crossinline call: suspend () -> T): T? {
         return try {
             val myObject = withContext(Dispatchers.IO) { call.invoke() }
