@@ -1,16 +1,29 @@
 package com.project.abandonedpets.viewmodel
 
-import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.project.domain.model.AbandonedPets
+import com.project.domain.model.PageInfo
 import com.project.domain.usecase.GetInfoUseCase
+import com.project.domain.usecase.GetPageInfoUseCase
 import kotlinx.coroutines.launch
 
-class MainViewModel(private val getInfoUseCase: GetInfoUseCase) : ViewModel() {
-    fun getInfo(bgnde: String, endde: String, pageNo: String, numOfRows: String) {
+class MainViewModel(private val getInfoUseCase: GetInfoUseCase, private val getPageInfoUseCase: GetPageInfoUseCase) : ViewModel() {
+    fun getInfo(bgnde: String, endde: String, pageNo: String, numOfRows: String): LiveData<List<AbandonedPets>> {
+        val abandonedPetsList = MutableLiveData<List<AbandonedPets>>()
         viewModelScope.launch {
-            val list = getInfoUseCase(bgnde, endde, pageNo, numOfRows)
-            Log.d("list", list.toString())
+            abandonedPetsList.value = getInfoUseCase(bgnde, endde, pageNo, numOfRows)
         }
+        return abandonedPetsList
+    }
+
+    fun getPageInfo(bgnde: String, endde: String, pageNo: String, numOfRows: String): LiveData<List<PageInfo>> {
+        val pageInfoList = MutableLiveData<List<PageInfo>>()
+        viewModelScope.launch {
+            pageInfoList.value = getPageInfoUseCase(bgnde, endde, pageNo, numOfRows)
+        }
+        return pageInfoList
     }
 }
