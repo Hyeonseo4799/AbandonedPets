@@ -2,6 +2,7 @@ package com.project.data.mapper
 
 import com.project.data.model.AbandonedPetsResponse
 import com.project.domain.model.AbandonedPets
+import com.project.domain.model.PageInfo
 
 object AbandonedPetsMapper {
     fun mapperToAbandonedPets(abandonedPetsResponse: AbandonedPetsResponse): List<AbandonedPets> {
@@ -22,10 +23,20 @@ object AbandonedPetsMapper {
                 specialFeature = it.specialMark,
                 shelterName = it.careNm,
                 shelterTel = it.careTel,
-                shelterAddr = it.careAddr)
+                shelterAddr = it.careAddr,
+            )
         }
     }
 
+    fun mapperToPageInfo(abandonedPetsResponse: AbandonedPetsResponse): List<PageInfo> {
+        return listOf(
+            PageInfo(
+                numOfRows = abandonedPetsResponse.response.body.numOfRows,
+                pageNo = abandonedPetsResponse.response.body.pageNo,
+                totalCount = abandonedPetsResponse.response.body.totalCount
+            )
+        )
+    }
 //    fun mapperToItem(abandonedPets: AbandonedPets): Item {
 //        return Item(
 //            happenDt = abandonedPets.happenDate,
