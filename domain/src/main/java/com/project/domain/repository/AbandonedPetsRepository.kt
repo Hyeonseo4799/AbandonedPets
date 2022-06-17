@@ -5,5 +5,5 @@ import com.project.domain.model.PageInfo
 
 interface AbandonedPetsRepository {
     suspend fun getInfo(bgnde: String, endde: String, pageNo: String, numOfRows: String): List<AbandonedPets>
-    suspend fun getPageInfo(bgnde: String, endde: String, pageNo: String, numOfRows: String): List<PageInfo>
+    suspend fun getPageInfo(bgnde: String, endde: String, pageNo: String, numOfRows: String): PageInfo
 }

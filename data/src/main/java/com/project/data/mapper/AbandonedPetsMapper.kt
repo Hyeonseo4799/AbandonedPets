@@ -24,17 +24,16 @@ object AbandonedPetsMapper {
                 shelterName = it.careNm,
                 shelterTel = it.careTel,
                 shelterAddr = it.careAddr,
+                organizeName = it.orgNm
             )
         }
     }
 
-    fun mapperToPageInfo(abandonedPetsResponse: AbandonedPetsResponse): List<PageInfo> {
-        return listOf(
-            PageInfo(
-                numOfRows = abandonedPetsResponse.response.body.numOfRows,
-                pageNo = abandonedPetsResponse.response.body.pageNo,
-                totalCount = abandonedPetsResponse.response.body.totalCount
-            )
+    fun mapperToPageInfo(abandonedPetsResponse: AbandonedPetsResponse): PageInfo {
+        return PageInfo(
+            numOfRows = abandonedPetsResponse.response.body.numOfRows,
+            pageNo = abandonedPetsResponse.response.body.pageNo,
+            totalCount = abandonedPetsResponse.response.body.totalCount
         )
     }
 //    fun mapperToItem(abandonedPets: AbandonedPets): Item {

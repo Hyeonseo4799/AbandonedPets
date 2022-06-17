@@ -19,11 +19,13 @@ class MainViewModel(private val getInfoUseCase: GetInfoUseCase, private val getP
         return abandonedPetsList
     }
 
-    fun getPageInfo(bgnde: String, endde: String, pageNo: String, numOfRows: String): LiveData<List<PageInfo>> {
-        val pageInfoList = MutableLiveData<List<PageInfo>>()
+    fun getPageInfo(bgnde: String, endde: String, pageNo: String, numOfRows: String): LiveData<PageInfo> {
+        val pageInfoList = MutableLiveData<PageInfo>()
         viewModelScope.launch {
             pageInfoList.value = getPageInfoUseCase(bgnde, endde, pageNo, numOfRows)
         }
         return pageInfoList
     }
+
+
 }

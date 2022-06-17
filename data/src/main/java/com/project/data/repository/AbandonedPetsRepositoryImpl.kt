@@ -11,7 +11,7 @@ class AbandonedPetsRepositoryImpl(private val dataSource: AbandonedPetsDataSourc
         return AbandonedPetsMapper.mapperToAbandonedPets(dataSource.getInfo(bgnde, endde, pageNo, numOfRows))
     }
 
-    override suspend fun getPageInfo(bgnde: String, endde: String, pageNo: String, numOfRows: String): List<PageInfo> {
+    override suspend fun getPageInfo(bgnde: String, endde: String, pageNo: String, numOfRows: String): PageInfo {
         return AbandonedPetsMapper.mapperToPageInfo(dataSource.getInfo(bgnde, endde, pageNo, numOfRows))
     }
 }
