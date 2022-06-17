@@ -5,4 +5,11 @@
     <string name="cat">고양이</string>
     <string name="etc">기타</string>
     <string name="title">가족을 기다리는 동물들</string>
+    <string name="thumbnail">미리보기 이미지</string>
+    <string name="filter">필터</string>
+    <string name="address">지역 : %s</string>
+    <string name="gender">성별 : %s</string>
+    <string name="neuter">중성화 : %s</string>
+    <string name="state">상태 : %s</string>
+    <string name="total">총 %s마리</string>
 </resources>
