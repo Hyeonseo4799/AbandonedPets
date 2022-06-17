@@ -9,7 +9,7 @@ class MyApplication : Application() {
         super.onCreate()
 
         startKoin {
-            modules(abandonedPetsDataSourceModule, abandonedPetsRepositoryModule, getInfoUseCaseModule, viewModelModule)
+            modules(abandonedPetsDataSourceModule, abandonedPetsRepositoryModule, getInfoUseCaseModule, getPageInfoUseCase, viewModelModule)
         }
     }
 }
