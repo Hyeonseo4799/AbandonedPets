@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">AbandonedPets</string>
+    <string name="all">전체</string>
+    <string name="dog">강아지</string>
+    <string name="cat">고양이</string>
+    <string name="etc">기타</string>
+    <string name="title">가족을 기다리는 동물들</string>
 </resources>
