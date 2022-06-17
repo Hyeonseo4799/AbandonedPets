@@ -11,10 +11,11 @@ data class AbandonedPets(
     val noticeStartDate: String,
     val noticeEndDate: String,
     val processState : String,
-    val petGender: String,
-    val neuterState: String,
+    var petGender: String,
+    var neuterState: String,
     val specialFeature: String,
     val shelterName : String,
     val shelterTel: String,
-    val shelterAddr: String
+    var shelterAddr: String,
+    val organizeName: String
 )
