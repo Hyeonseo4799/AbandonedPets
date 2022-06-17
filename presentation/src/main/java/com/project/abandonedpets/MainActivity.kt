@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this@MainActivity, R.layout.activity_main)
+        binding.lifecycleOwner = this@MainActivity
 
         val adapter = setRec()
         val abandonedPetsObserver = Observer<List<AbandonedPets>> {
