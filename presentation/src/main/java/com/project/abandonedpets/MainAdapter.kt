@@ -38,7 +38,7 @@ class MainAdapter(private val context: Context) : RecyclerView.Adapter<MainAdapt
             "M" -> "수컷"
             "F" -> "암컷"
             "Q" -> "미상"
-            else -> ""
+            else -> gender
         }
     }
 
@@ -47,7 +47,7 @@ class MainAdapter(private val context: Context) : RecyclerView.Adapter<MainAdapt
             "Y" -> "예"
             "N" -> "아니오"
             "U" -> "미상"
-            else -> ""
+            else -> neuterState
         }
     }
 }
