@@ -8,4 +8,8 @@ class AbandonedPetsDataSourceImpl(private val api: AbandonedPetsApi) : BaseRepos
     override suspend fun getInfo(bgnde: String, endde: String, pageNo: String, numOfRows: String): AbandonedPetsResponse {
         return safeApiCall { api.getInfo(bgnde, endde, pageNo, numOfRows).body() }!!
     }
+
+    override suspend fun getPageInfo(bgnde: String, endde: String, pageNo: String, numOfRows: String): AbandonedPetsResponse {
+        return safeApiCall { api.getInfo(bgnde, endde, pageNo, numOfRows).body() }!!
+    }
 }
