@@ -7,7 +7,11 @@ import org.koin.dsl.module
 val abandonedPetsDataSourceModule = module {
     single<AbandonedPetsDataSource> {
         AbandonedPetsDataSourceImpl(
-            NetworkModule.provideAbandonedPetsApiService(NetworkModule.provideRetrofitInstance(
-                    NetworkModule.provideConverterFactory())))
+            NetworkModule.provideAbandonedPetsApiService(
+                NetworkModule.provideRetrofitInstance(
+                    NetworkModule.provideConverterFactory()
+                )
+            )
+        )
     }
 }

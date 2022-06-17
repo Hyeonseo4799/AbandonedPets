@@ -13,11 +13,6 @@ object NetworkModule {
             .build()
     }
 
-    fun provideAbandonedPetsApiService(retrofit: Retrofit): AbandonedPetsApi {
-        return retrofit.create(AbandonedPetsApi::class.java)
-    }
-
-    fun provideConverterFactory(): GsonConverterFactory {
-        return GsonConverterFactory.create()
-    }
+    fun provideAbandonedPetsApiService(retrofit: Retrofit): AbandonedPetsApi = retrofit.create(AbandonedPetsApi::class.java)
+    fun provideConverterFactory(): GsonConverterFactory = GsonConverterFactory.create()
 }
