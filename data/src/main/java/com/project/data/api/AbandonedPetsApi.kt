@@ -11,8 +11,8 @@ interface AbandonedPetsApi {
     suspend fun getInfo(
         @Query("bgnde") bgnde: String,
         @Query("endde") endde: String,
-        @Query("pageNo") pageNo: String,
-        @Query("numOfRows") numOfRows: String,
+        @Query("pageNo") pageNo: String = "1",
+        @Query("numOfRows") numOfRows: String = "10",
         @Query("_type") type: String = "json",
         @Query(value="serviceKey", encoded = true) serviceKey: String = BuildConfig.API_KEY
     ): Response<AbandonedPetsResponse>
