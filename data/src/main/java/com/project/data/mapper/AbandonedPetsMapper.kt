@@ -36,24 +36,4 @@ object AbandonedPetsMapper {
             totalCount = abandonedPetsResponse.response.body.totalCount
         )
     }
-//    fun mapperToItem(abandonedPets: AbandonedPets): Item {
-//        return Item(
-//            happenDt = abandonedPets.happenDate,
-//            filename = abandonedPets.petImg,
-//            kindCd = abandonedPets.petType,
-//            colorCd = abandonedPets.petColor,
-//            age = abandonedPets.petAge,
-//            weight = abandonedPets.petWeight,
-//            noticeNo = abandonedPets.noticeNo,
-//            noticeSdt = abandonedPets.noticeStartDate,
-//            noticeEdt = abandonedPets.noticeEndDate,
-//            processState = abandonedPets.processState,
-//            sexCd = abandonedPets.petGender,
-//            neuterYn = abandonedPets.neuterState,
-//            specialMark = abandonedPets.specialFeature,
-//            careNm = abandonedPets.shelterName,
-//            careTel = abandonedPets.shelterTel,
-//            careAddr = abandonedPets.shelterAddr
-//        )
-//    }
 }
