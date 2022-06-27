@@ -4,12 +4,19 @@
     <string name="dog">강아지</string>
     <string name="cat">고양이</string>
     <string name="etc">기타</string>
-    <string name="title">가족을 기다리는 동물들</string>
     <string name="thumbnail">미리보기 이미지</string>
     <string name="filter">필터</string>
     <string name="address">지역 : %s</string>
     <string name="gender">성별 : %s</string>
     <string name="neuter">중성화 : %s</string>
     <string name="state">상태 : %s</string>
-    <string name="total">총 %s마리</string>
+    <string name="total">가족을 기다리는 %s마리의 동물들</string>
+    <string name="btn_text_species">축종</string>
+    <string name="btn_text_address">지역</string>
+    <string name="btn_text_gender">성별</string>
+    <string name="btn_text_neuter">중성화 여부</string>
+    <string name="male">수컷</string>
+    <string name="female">암컷</string>
+    <string name="neutered">중성화 됨</string>
+    <string name="unneutered">중성화 안됨</string>
 </resources>
