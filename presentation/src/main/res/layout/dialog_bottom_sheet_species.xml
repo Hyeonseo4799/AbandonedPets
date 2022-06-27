@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="fragment"
+            type="com.project.abandonedpets.BottomSheetSpecies" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioGroup
+            android:checkedButton="@id/rb_all"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/rb_dog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_radio_btn"
+                android:button="@null"
+                android:paddingStart="10dp"
+                android:paddingEnd="0dp"
+                android:text="@string/dog"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/rb_cat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_radio_btn"
+                android:button="@null"
+                android:paddingStart="10dp"
+                android:paddingEnd="0dp"
+                android:text="@string/cat"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/rb_all"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_radio_btn"
+                android:button="@null"
+                android:paddingStart="10dp"
+                android:paddingEnd="0dp"
+                android:text="@string/all"
+                android:textSize="16sp" />
+        </RadioGroup>
+    </LinearLayout>
+</layout>
