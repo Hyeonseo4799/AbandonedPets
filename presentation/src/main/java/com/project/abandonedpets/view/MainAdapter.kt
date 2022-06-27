@@ -1,16 +1,16 @@
-package com.project.abandonedpets
+package com.project.abandonedpets.view
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.project.abandonedpets.databinding.ListItemBinding
 import com.project.domain.model.AbandonedPets
 
-class MainAdapter(private val context: Context) : RecyclerView.Adapter<MainAdapter.MainVH>() {
-    var abandonedPetsList = listOf<AbandonedPets>()
-
+class MainAdapter(private val context: Context) : PagingDataAdapter<AbandonedPets, MainAdapter.MainVH>(ABANDONEDPETS_DIFF) {
     inner class MainVH(private val binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(data: AbandonedPets) {
             data.petGender = checkGender(data.petGender)
@@ -28,10 +28,8 @@ class MainAdapter(private val context: Context) : RecyclerView.Adapter<MainAdapt
     }
 
     override fun onBindViewHolder(holder: MainVH, position: Int) {
-        holder.onBind(abandonedPetsList[position])
+        getItem(position)?.let { holder.onBind(it) }
     }
-
-    override fun getItemCount(): Int = abandonedPetsList.size
 
     fun checkGender(gender: String): String {
         return when (gender) {
@@ -48,6 +46,19 @@ class MainAdapter(private val context: Context) : RecyclerView.Adapter<MainAdapt
             "N" -> "아니오"
             "U" -> "미상"
             else -> neuterState
+        }
+    }
+
+    companion object {
+        private val ABANDONEDPETS_DIFF = object : DiffUtil.ItemCallback<AbandonedPets>() {
+            override fun areItemsTheSame(oldItem: AbandonedPets, newItem: AbandonedPets): Boolean {
+                return oldItem.noticeNo == newItem.noticeNo
+            }
+
+            override fun areContentsTheSame(oldItem: AbandonedPets, newItem: AbandonedPets): Boolean {
+                return oldItem == newItem
+            }
+
         }
     }
 }
