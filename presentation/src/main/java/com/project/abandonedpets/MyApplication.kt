@@ -5,7 +5,7 @@ import com.project.abandonedpets.di.*
 import org.koin.core.context.startKoin
 
 class MyApplication : Application() {
-    private lateinit var dataStore : DataStoreRadioValue
+    private lateinit var dataStore: DataStoreRadioValue
 
     companion object {
         private lateinit var myApplication: MyApplication

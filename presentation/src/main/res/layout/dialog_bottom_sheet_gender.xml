@@ -14,41 +14,41 @@
         android:orientation="vertical">
 
         <RadioGroup
-            android:checkedButton="@id/rb_all"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:checkedButton="@id/rb_all">
 
             <RadioButton
-                android:onClick="@{(view)->fragment.select(view)}"
                 android:id="@+id/rb_male"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_radio_btn"
                 android:button="@null"
+                android:onClick="@{(view)->fragment.select(view)}"
                 android:paddingStart="10dp"
                 android:paddingEnd="0dp"
                 android:text="@string/male"
                 android:textSize="16sp" />
 
             <RadioButton
-                android:onClick="@{(view)->fragment.select(view)}"
                 android:id="@+id/rb_female"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_radio_btn"
                 android:button="@null"
+                android:onClick="@{(view)->fragment.select(view)}"
                 android:paddingStart="10dp"
                 android:paddingEnd="0dp"
                 android:text="@string/female"
                 android:textSize="16sp" />
 
             <RadioButton
-                android:onClick="@{(view)->fragment.select(view)}"
                 android:id="@+id/rb_all"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_radio_btn"
                 android:button="@null"
+                android:onClick="@{(view)->fragment.select(view)}"
                 android:paddingStart="10dp"
                 android:paddingEnd="0dp"
                 android:text="@string/all"

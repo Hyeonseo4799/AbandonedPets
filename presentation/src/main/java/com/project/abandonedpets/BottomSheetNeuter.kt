@@ -8,6 +8,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.project.abandonedpets.databinding.DialogBottomSheetNeuterBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 
 class BottomSheetNeuter : BottomSheetDialogFragment() {
     private lateinit var binding: DialogBottomSheetNeuterBinding
@@ -23,6 +27,40 @@ class BottomSheetNeuter : BottomSheetDialogFragment() {
             fragment = this@BottomSheetNeuter
             lifecycleOwner = this@BottomSheetNeuter
         }
+
+        CoroutineScope(Dispatchers.IO).launch {
+            setRadio(MyApplication.getInstance().getDataStore().neuter.first())
+        }
+
         return binding.root
+    }
+
+    fun select(view: View) {
+        binding.apply {
+            when (view) {
+                rbNeutered -> save("neutered")
+                rbUnneutered -> save("unneutered")
+                rbAll -> save("all")
+
+            }
+        }
+    }
+
+    private fun setRadio(data: String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            binding.apply {
+                when (data) {
+                    "neutered" -> rbNeutered.isChecked = true
+                    "unneutered" -> rbUnneutered.isChecked = true
+                    "all" -> rbAll.isChecked = true
+                }
+            }
+        }
+    }
+
+    private fun save(value: String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            MyApplication.getInstance().getDataStore().save(value, "neuter")
+        }
     }
 }

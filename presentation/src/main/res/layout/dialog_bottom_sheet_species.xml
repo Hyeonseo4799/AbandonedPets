@@ -14,9 +14,9 @@
         android:orientation="vertical">
 
         <RadioGroup
-            android:checkedButton="@id/rb_all"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:checkedButton="@id/rb_all">
 
             <RadioButton
                 android:id="@+id/rb_dog"
@@ -24,6 +24,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_radio_btn"
                 android:button="@null"
+                android:onClick="@{(view)->fragment.select(view)}"
                 android:paddingStart="10dp"
                 android:paddingEnd="0dp"
                 android:text="@string/dog"
@@ -35,6 +36,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_radio_btn"
                 android:button="@null"
+                android:onClick="@{(view)->fragment.select(view)}"
                 android:paddingStart="10dp"
                 android:paddingEnd="0dp"
                 android:text="@string/cat"
@@ -46,6 +48,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_radio_btn"
                 android:button="@null"
+                android:onClick="@{(view)->fragment.select(view)}"
                 android:paddingStart="10dp"
                 android:paddingEnd="0dp"
                 android:text="@string/all"

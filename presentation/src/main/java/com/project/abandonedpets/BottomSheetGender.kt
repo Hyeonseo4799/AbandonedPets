@@ -1,7 +1,6 @@
 package com.project.abandonedpets
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +15,6 @@ import kotlinx.coroutines.launch
 
 class BottomSheetGender : BottomSheetDialogFragment() {
     private lateinit var binding: DialogBottomSheetGenderBinding
-    private lateinit var check: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +29,7 @@ class BottomSheetGender : BottomSheetDialogFragment() {
         }
 
         CoroutineScope(Dispatchers.IO).launch {
-            setRadio(MyApplication.getInstance().getDataStore().text.first())
+            setRadio(MyApplication.getInstance().getDataStore().gender.first())
         }
 
         return binding.root
@@ -62,7 +60,7 @@ class BottomSheetGender : BottomSheetDialogFragment() {
 
     private fun save(value: String) {
         CoroutineScope(Dispatchers.IO).launch {
-            MyApplication.getInstance().getDataStore().save(value)
+            MyApplication.getInstance().getDataStore().save(value, "gender")
         }
     }
 
