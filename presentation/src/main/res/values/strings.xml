@@ -11,6 +11,7 @@
     <string name="neuter">중성화 : %s</string>
     <string name="state">상태 : %s</string>
     <string name="total">가족을 기다리는 %s마리의 동물들</string>
+    <string name="term">기간</string>
     <string name="btn_text_species">축종</string>
     <string name="btn_text_address">지역</string>
     <string name="btn_text_gender">성별</string>
