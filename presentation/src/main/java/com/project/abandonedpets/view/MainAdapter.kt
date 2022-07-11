@@ -31,6 +31,19 @@ class MainAdapter(private val context: Context) : PagingDataAdapter<AbandonedPet
         getItem(position)?.let { holder.onBind(it) }
     }
 
+    companion object {
+        private val ABANDONEDPETS_DIFF = object : DiffUtil.ItemCallback<AbandonedPets>() {
+            override fun areItemsTheSame(oldItem: AbandonedPets, newItem: AbandonedPets): Boolean {
+                return oldItem === newItem
+            }
+
+            override fun areContentsTheSame(oldItem: AbandonedPets, newItem: AbandonedPets): Boolean {
+                return oldItem == newItem
+            }
+
+        }
+    }
+
     fun checkGender(gender: String): String {
         return when (gender) {
             "M" -> "수컷"
@@ -49,16 +62,5 @@ class MainAdapter(private val context: Context) : PagingDataAdapter<AbandonedPet
         }
     }
 
-    companion object {
-        private val ABANDONEDPETS_DIFF = object : DiffUtil.ItemCallback<AbandonedPets>() {
-            override fun areItemsTheSame(oldItem: AbandonedPets, newItem: AbandonedPets): Boolean {
-                return oldItem.noticeNo == newItem.noticeNo
-            }
-
-            override fun areContentsTheSame(oldItem: AbandonedPets, newItem: AbandonedPets): Boolean {
-                return oldItem == newItem
-            }
-
-        }
-    }
 }
+

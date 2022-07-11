@@ -41,7 +41,6 @@ class BottomSheetGender : BottomSheetDialogFragment() {
                 rbMale -> save("male")
                 rbFemale -> save("female")
                 rbAll -> save("all")
-
             }
         }
     }

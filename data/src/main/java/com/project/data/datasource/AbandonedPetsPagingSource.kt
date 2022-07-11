@@ -31,6 +31,4 @@ class AbandonedPetsPagingSource(
                 ?: state.closestPageToPosition(anchorPosition)?.nextKey?.minus(1)
         }
     }
-
-
 }

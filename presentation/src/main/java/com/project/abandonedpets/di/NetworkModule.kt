@@ -6,13 +6,11 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object NetworkModule {
-    fun provideRetrofitInstance(gsonConverterFactory: GsonConverterFactory): Retrofit {
+    fun getAbandonedPetsApi(): AbandonedPetsApi {
         return Retrofit.Builder()
-            .addConverterFactory(gsonConverterFactory)
+            .addConverterFactory(GsonConverterFactory.create())
             .baseUrl(Utils.BASE_URL)
             .build()
+            .create(AbandonedPetsApi::class.java)
     }
-
-    fun provideAbandonedPetsApiService(retrofit: Retrofit): AbandonedPetsApi = retrofit.create(AbandonedPetsApi::class.java)
-    fun provideConverterFactory(): GsonConverterFactory = GsonConverterFactory.create()
 }

@@ -15,9 +15,7 @@ class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         myApplication = this@MyApplication
-        startKoin {
-            modules(abandonedPetsDataSourceModule, abandonedPetsRepositoryModule, getPageInfoUseCase, viewModelModule, abandonedPetsRepositoryImpl)
-        }
+        startKoin { modules(applicationModule) }
         dataStore = DataStoreRadioValue(this@MyApplication)
     }
 

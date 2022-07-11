@@ -21,9 +21,9 @@ class DataStoreRadioValue(private val context: Context) {
         val stringKeySpecies = stringPreferencesKey("species")
     }
 
-    val gender = get("gender")
-    val neuter = get("neuter")
-    val species = get("species")
+    val gender = getData("gender")
+    val neuter = getData("neuter")
+    val species = getData("species")
 
     suspend fun save(value: String, key: String) {
         val stringKey = getKey(key)
@@ -33,7 +33,7 @@ class DataStoreRadioValue(private val context: Context) {
         }
     }
 
-    fun get(key: String): Flow<String> {
+    private fun getData(key: String): Flow<String> {
         val stringKey = getKey(key)
 
         return context.dataStore.data
