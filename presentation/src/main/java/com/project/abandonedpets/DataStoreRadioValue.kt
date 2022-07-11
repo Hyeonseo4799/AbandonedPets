@@ -7,6 +7,7 @@ import androidx.datastore.preferences.preferencesDataStore
 import com.project.abandonedpets.DataStoreRadioValue.PreferenceKeys.stringKeyGender
 import com.project.abandonedpets.DataStoreRadioValue.PreferenceKeys.stringKeyNeuter
 import com.project.abandonedpets.DataStoreRadioValue.PreferenceKeys.stringKeySpecies
+import com.project.abandonedpets.DataStoreRadioValue.PreferenceKeys.stringKeyTerm
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
@@ -16,11 +17,13 @@ class DataStoreRadioValue(private val context: Context) {
     private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "dataStore")
 
     private object PreferenceKeys {
+        val stringKeyTerm = stringPreferencesKey("term")
         val stringKeyGender = stringPreferencesKey("gender")
         val stringKeyNeuter = stringPreferencesKey("neuter")
         val stringKeySpecies = stringPreferencesKey("species")
     }
 
+    val term = getData("term")
     val gender = getData("gender")
     val neuter = getData("neuter")
     val species = getData("species")
@@ -54,6 +57,7 @@ class DataStoreRadioValue(private val context: Context) {
             "gender" -> stringKeyGender
             "neuter" -> stringKeyNeuter
             "species" -> stringKeySpecies
+            "term" -> stringKeyTerm
             else -> stringKeyGender
         }
     }

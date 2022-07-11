@@ -20,4 +20,7 @@
     <string name="female">암컷</string>
     <string name="neutered">중성화 됨</string>
     <string name="unneutered">중성화 안됨</string>
+    <string name="day">하루</string>
+    <string name="week">일주일</string>
+    <string name="month">한 달</string>
 </resources>

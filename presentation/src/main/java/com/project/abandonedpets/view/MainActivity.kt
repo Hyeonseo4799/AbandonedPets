@@ -6,10 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.project.abandonedpets.BottomSheetGender
-import com.project.abandonedpets.BottomSheetNeuter
-import com.project.abandonedpets.BottomSheetSpecies
-import com.project.abandonedpets.R
+import com.project.abandonedpets.*
 import com.project.abandonedpets.databinding.ActivityMainBinding
 import com.project.abandonedpets.viewmodel.MainViewModel
 import kotlinx.coroutines.flow.collectLatest
@@ -84,6 +81,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun showBottomSheet(id: Int) {
         when (id) {
+            R.id.term -> bottomSheetFragment = BottomSheetTerm()
             R.id.species -> bottomSheetFragment = BottomSheetSpecies()
             R.id.address -> {}
             R.id.gender -> bottomSheetFragment = BottomSheetGender()
