@@ -1,14 +1,7 @@
 package com.project.abandonedpets.view
 
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Spannable
-import android.text.SpannableStringBuilder
-import android.text.Spanned
-import android.text.style.ForegroundColorSpan
-import android.util.Log
-import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -46,7 +39,10 @@ class MainActivity : AppCompatActivity() {
     private fun initAdapter() {
         val linearLayoutManager = LinearLayoutManager(this@MainActivity)
 
-        mainAdapter = MainAdapter(this@MainActivity)
+        mainAdapter = MainAdapter(this@MainActivity, ItemClickListener { id ->
+            showBottomSheet(id)
+        })
+
         binding.recyclerview.apply {
             adapter = mainAdapter
             layoutManager = linearLayoutManager
@@ -77,11 +73,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun scrollToTop() {
-        binding.recyclerview.smoothScrollToPosition(0)
+        binding.recyclerview.apply {
+            val top = (layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
+
+            if (top > 15)
+                scrollToPosition(15)
+            smoothScrollToPosition(0)
+        }
     }
 
-    fun showBottomSheet(view: View) {
-        when (view.id) {
+    private fun showBottomSheet(id: Int) {
+        when (id) {
             R.id.species -> bottomSheetFragment = BottomSheetSpecies()
             R.id.address -> {}
             R.id.gender -> bottomSheetFragment = BottomSheetGender()
@@ -90,5 +92,4 @@ class MainActivity : AppCompatActivity() {
         }
         bottomSheetFragment.show(supportFragmentManager, bottomSheetFragment.tag)
     }
-
 }
