@@ -1,4 +1,4 @@
-package com.project.abandonedpets
+package com.project.abandonedpets.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,14 +7,16 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.project.abandonedpets.databinding.DialogBottomSheetGenderBinding
+import com.project.abandonedpets.MyApplication
+import com.project.abandonedpets.R
+import com.project.abandonedpets.databinding.DialogBottomSheetNeuterBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
-class BottomSheetGender : BottomSheetDialogFragment() {
-    private lateinit var binding: DialogBottomSheetGenderBinding
+class BottomSheetNeuter : BottomSheetDialogFragment() {
+    private lateinit var binding: DialogBottomSheetNeuterBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,14 +24,14 @@ class BottomSheetGender : BottomSheetDialogFragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        binding = DataBindingUtil.inflate(inflater, R.layout.dialog_bottom_sheet_gender, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.dialog_bottom_sheet_neuter, container, false)
         binding.apply {
-            fragment = this@BottomSheetGender
-            lifecycleOwner = this@BottomSheetGender
+            fragment = this@BottomSheetNeuter
+            lifecycleOwner = this@BottomSheetNeuter
         }
 
         CoroutineScope(Dispatchers.IO).launch {
-            setRadio(MyApplication.getInstance().getDataStore().gender.first())
+            setRadio(MyApplication.getInstance().getDataStore().neuter.first())
         }
 
         return binding.root
@@ -38,9 +40,10 @@ class BottomSheetGender : BottomSheetDialogFragment() {
     fun select(view: View) {
         binding.apply {
             when (view) {
-                rbMale -> save("male")
-                rbFemale -> save("female")
+                rbNeutered -> save("neutered")
+                rbUnneutered -> save("unneutered")
                 rbAll -> save("all")
+
             }
         }
     }
@@ -49,8 +52,8 @@ class BottomSheetGender : BottomSheetDialogFragment() {
         CoroutineScope(Dispatchers.IO).launch {
             binding.apply {
                 when (data) {
-                    "male" -> rbMale.isChecked = true
-                    "female" -> rbFemale.isChecked = true
+                    "neutered" -> rbNeutered.isChecked = true
+                    "unneutered" -> rbUnneutered.isChecked = true
                     "all" -> rbAll.isChecked = true
                 }
             }
@@ -59,8 +62,7 @@ class BottomSheetGender : BottomSheetDialogFragment() {
 
     private fun save(value: String) {
         CoroutineScope(Dispatchers.IO).launch {
-            MyApplication.getInstance().getDataStore().save(value, "gender")
+            MyApplication.getInstance().getDataStore().save(value, "neuter")
         }
     }
-
 }

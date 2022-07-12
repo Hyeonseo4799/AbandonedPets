@@ -1,4 +1,4 @@
-package com.project.abandonedpets
+package com.project.abandonedpets.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,14 +7,16 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.project.abandonedpets.databinding.DialogBottomSheetNeuterBinding
+import com.project.abandonedpets.MyApplication
+import com.project.abandonedpets.R
+import com.project.abandonedpets.databinding.DialogBottomSheetSpeciesBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
-class BottomSheetNeuter : BottomSheetDialogFragment() {
-    private lateinit var binding: DialogBottomSheetNeuterBinding
+class BottomSheetSpecies : BottomSheetDialogFragment() {
+    private lateinit var binding: DialogBottomSheetSpeciesBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,14 +24,14 @@ class BottomSheetNeuter : BottomSheetDialogFragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        binding = DataBindingUtil.inflate(inflater, R.layout.dialog_bottom_sheet_neuter, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.dialog_bottom_sheet_species, container, false)
         binding.apply {
-            fragment = this@BottomSheetNeuter
-            lifecycleOwner = this@BottomSheetNeuter
+            fragment = this@BottomSheetSpecies
+            lifecycleOwner = this@BottomSheetSpecies
         }
 
         CoroutineScope(Dispatchers.IO).launch {
-            setRadio(MyApplication.getInstance().getDataStore().neuter.first())
+            setRadio(MyApplication.getInstance().getDataStore().species.first())
         }
 
         return binding.root
@@ -38,8 +40,8 @@ class BottomSheetNeuter : BottomSheetDialogFragment() {
     fun select(view: View) {
         binding.apply {
             when (view) {
-                rbNeutered -> save("neutered")
-                rbUnneutered -> save("unneutered")
+                rbDog -> save("dog")
+                rbCat -> save("cat")
                 rbAll -> save("all")
 
             }
@@ -50,8 +52,8 @@ class BottomSheetNeuter : BottomSheetDialogFragment() {
         CoroutineScope(Dispatchers.IO).launch {
             binding.apply {
                 when (data) {
-                    "neutered" -> rbNeutered.isChecked = true
-                    "unneutered" -> rbUnneutered.isChecked = true
+                    "dog" -> rbDog.isChecked = true
+                    "cat" -> rbCat.isChecked = true
                     "all" -> rbAll.isChecked = true
                 }
             }
@@ -60,7 +62,7 @@ class BottomSheetNeuter : BottomSheetDialogFragment() {
 
     private fun save(value: String) {
         CoroutineScope(Dispatchers.IO).launch {
-            MyApplication.getInstance().getDataStore().save(value, "neuter")
+            MyApplication.getInstance().getDataStore().save(value, "species")
         }
     }
 }

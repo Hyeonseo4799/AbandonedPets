@@ -1,4 +1,4 @@
-package com.project.abandonedpets
+package com.project.abandonedpets.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,14 +7,16 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.project.abandonedpets.databinding.DialogBottomSheetTermBinding
+import com.project.abandonedpets.MyApplication
+import com.project.abandonedpets.R
+import com.project.abandonedpets.databinding.DialogBottomSheetGenderBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
-class BottomSheetTerm : BottomSheetDialogFragment() {
-    private lateinit var binding: DialogBottomSheetTermBinding
+class BottomSheetGender : BottomSheetDialogFragment() {
+    private lateinit var binding: DialogBottomSheetGenderBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,14 +24,14 @@ class BottomSheetTerm : BottomSheetDialogFragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        binding = DataBindingUtil.inflate(inflater, R.layout.dialog_bottom_sheet_term, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.dialog_bottom_sheet_gender, container, false)
         binding.apply {
-            fragment = this@BottomSheetTerm
-            lifecycleOwner = this@BottomSheetTerm
+            fragment = this@BottomSheetGender
+            lifecycleOwner = this@BottomSheetGender
         }
 
         CoroutineScope(Dispatchers.IO).launch {
-            setRadio(MyApplication.getInstance().getDataStore().term.first())
+            setRadio(MyApplication.getInstance().getDataStore().gender.first())
         }
 
         return binding.root
@@ -38,9 +40,8 @@ class BottomSheetTerm : BottomSheetDialogFragment() {
     fun select(view: View) {
         binding.apply {
             when (view) {
-                rbDay -> save("day")
-                rbWeek -> save("week")
-                rbMonth -> save("month")
+                rbMale -> save("male")
+                rbFemale -> save("female")
                 rbAll -> save("all")
             }
         }
@@ -50,9 +51,8 @@ class BottomSheetTerm : BottomSheetDialogFragment() {
         CoroutineScope(Dispatchers.IO).launch {
             binding.apply {
                 when (data) {
-                    "day" -> rbDay.isChecked = true
-                    "week" -> rbWeek.isChecked = true
-                    "month" -> rbMonth.isChecked = true
+                    "male" -> rbMale.isChecked = true
+                    "female" -> rbFemale.isChecked = true
                     "all" -> rbAll.isChecked = true
                 }
             }
@@ -61,7 +61,8 @@ class BottomSheetTerm : BottomSheetDialogFragment() {
 
     private fun save(value: String) {
         CoroutineScope(Dispatchers.IO).launch {
-            MyApplication.getInstance().getDataStore().save(value, "term")
+            MyApplication.getInstance().getDataStore().save(value, "gender")
         }
     }
+
 }
