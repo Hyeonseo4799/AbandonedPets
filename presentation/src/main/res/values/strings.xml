@@ -23,4 +23,19 @@
     <string name="day">하루</string>
     <string name="week">일주일</string>
     <string name="month">한 달</string>
+    <string name="shelter">보호센터</string>
+    <string name="competent_authority">관할기관</string>
+    <string name="call">보호소에 연락하기</string>
+    <string name="details_title">당신의 입양을 기다리고 있어요</string>
+    <string name="notice_number">공고번호 : %s</string>
+    <string name="age">나이 : %s</string>
+    <string name="color">털색 : %s</string>
+    <string name="features">특징 : %s</string>
+    <string name="weight">체중 : %s</string>
+    <string name="shelter_name">센터명 : %s</string>
+    <string name="phone">연락처 : %s</string>
+    <string name="shelter_address">보호장소 : %s</string>
+    <string name="organize_name">담당자 : %s</string>
+    <string name="notice_date">공고기한: %s ~ %s</string>
+    <string name="happen_place">발견장소 : %s</string>
 </resources>
