@@ -2,36 +2,45 @@
 <layout>
 
     <data>
+        <variable
+            name="listener"
+            type="com.project.abandonedpets.view.ItemClickListener" />
 
         <variable
             name="data"
             type="com.project.domain.model.AbandonedPets" />
+
+        <variable
+            name="position"
+            type="int" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/list_item"
+        android:onClick="@{()->listener.onClick(position)}"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/background"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp">
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@color/background">
 
         <ImageView
-            android:background="@drawable/bg_imageview"
-            tools:src="@drawable/images"
             android:id="@+id/thumbnail"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
+            android:background="@drawable/bg_imageview"
             android:clipToOutline="true"
             android:contentDescription="@string/thumbnail"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="UnusedAttribute" />
+            tools:ignore="UnusedAttribute"
+            tools:src="@drawable/images" />
 
         <TextView
             android:id="@+id/title"

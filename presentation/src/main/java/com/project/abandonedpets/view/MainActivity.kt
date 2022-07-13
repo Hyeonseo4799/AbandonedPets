@@ -2,6 +2,7 @@ package com.project.abandonedpets.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -36,9 +37,11 @@ class MainActivity : AppCompatActivity() {
     private fun initAdapter() {
         val linearLayoutManager = LinearLayoutManager(this@MainActivity)
 
-        mainAdapter = MainAdapter(this@MainActivity, ItemClickListener { id ->
-            showBottomSheet(id)
-        })
+        mainAdapter = MainAdapter(
+            this@MainActivity,
+            HeaderClickListener { id -> showBottomSheet(id) },
+            ItemClickListener { position -> Log.d("id", position.toString()) }
+        )
 
         binding.recyclerview.apply {
             adapter = mainAdapter
@@ -90,4 +93,5 @@ class MainActivity : AppCompatActivity() {
         }
         bottomSheetFragment.show(supportFragmentManager, bottomSheetFragment.tag)
     }
+
 }

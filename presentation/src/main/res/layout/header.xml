@@ -6,7 +6,7 @@
 
         <variable
             name="listener"
-            type="com.project.abandonedpets.view.ItemClickListener" />
+            type="com.project.abandonedpets.view.HeaderClickListener" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -26,7 +26,7 @@
                 android:id="@+id/term"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="7dp"
+                android:layout_marginStart="16dp"
                 android:background="@drawable/bg_filter_btn"
                 android:gravity="center"
                 android:onClick="@{(view)->listener.onClick(view)}"
@@ -41,7 +41,7 @@
                 android:id="@+id/species"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="7dp"
+                android:layout_marginStart="8dp"
                 android:background="@drawable/bg_filter_btn"
                 android:gravity="center"
                 android:onClick="@{(view)->listener.onClick(view)}"
@@ -57,7 +57,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="7dp"
+                android:layout_marginStart="8dp"
                 android:background="@drawable/bg_filter_btn"
                 android:onClick="@{(view)->listener.onClick(view)}"
                 android:paddingLeft="15dp"
@@ -72,7 +72,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="7dp"
+                android:layout_marginStart="8dp"
                 android:background="@drawable/bg_filter_btn"
                 android:onClick="@{(view)->listener.onClick(view)}"
                 android:paddingLeft="15dp"
@@ -87,7 +87,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="7dp"
+                android:layout_marginStart="8dp"
                 android:background="@drawable/bg_filter_btn"
                 android:onClick="@{(view)->listener.onClick(view)}"
                 android:paddingLeft="15dp"
