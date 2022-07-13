@@ -26,7 +26,6 @@
     <string name="shelter">보호센터</string>
     <string name="competent_authority">관할기관</string>
     <string name="call">보호소에 연락하기</string>
-    <string name="details_title">당신의 입양을 기다리고 있어요</string>
     <string name="notice_number">공고번호 : %s</string>
     <string name="age">나이 : %s</string>
     <string name="color">털색 : %s</string>
