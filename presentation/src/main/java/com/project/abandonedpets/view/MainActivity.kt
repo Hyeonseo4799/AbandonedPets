@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         mainAdapter = MainAdapter(
             this@MainActivity,
             HeaderClickListener { id -> showBottomSheet(id) },
-            ItemClickListener { position -> Log.d("id", position.toString()) }
+            ItemClickListener { position -> mainAdapter.showDetails(position) }
         )
 
         binding.recyclerview.apply {

@@ -1,6 +1,7 @@
 package com.project.abandonedpets.view
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,21 +16,24 @@ import com.project.domain.model.AbandonedPets
 private const val HEADER = 0
 private const val ITEM = 1
 
-class MainAdapter(private val context: Context, private val clickListener: ItemClickListener) : PagingDataAdapter<AbandonedPets, RecyclerView.ViewHolder>(ABANDONEDPETS_DIFF) {
+class MainAdapter(private val context: Context, private val headerClickListener: HeaderClickListener, private val itemClickListener: ItemClickListener) :
+    PagingDataAdapter<AbandonedPets, RecyclerView.ViewHolder>(ABANDONEDPETS_DIFF) {
     inner class MainVH(private val binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind(data: AbandonedPets) {
+        fun onBind(data: AbandonedPets, itemClickListener: ItemClickListener) {
             data.petGender = checkGender(data.petGender)
             data.neuterState = checkNeuterState(data.neuterState)
 
             binding.data = data
-            Glide.with(context).load(data.petImg).into(binding.thumbnail)
+            Glide.with(context).load(data.thumbnail).into(binding.thumbnail)
             binding.thumbnail.clipToOutline = true
+            binding.listener = itemClickListener
+            binding.position = this.layoutPosition
         }
     }
 
     inner class HeaderVH(private val binding: HeaderBinding) : RecyclerView.ViewHolder(binding.root) {
         fun setListener() {
-            binding.listener = clickListener
+            binding.listener = headerClickListener
         }
     }
 
@@ -37,12 +41,13 @@ class MainAdapter(private val context: Context, private val clickListener: ItemC
         return if (position == 0) HEADER else ITEM
     }
 
-
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
             is HeaderVH -> holder.setListener()
-            is MainVH -> getItem(position)?.let { holder.onBind(it) }
+            is MainVH -> holder.onBind(getItem(position)!!, itemClickListener)
+
         }
+        holder.itemView
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -77,9 +82,19 @@ class MainAdapter(private val context: Context, private val clickListener: ItemC
             else -> neuterState
         }
     }
+
+    fun showDetails(position: Int) {
+        val item = getItem(position)
+        val intent = Intent(context, DetailsActivity::class.java)
+        intent.putExtra("data", item)
+        context.startActivity(intent)
+    }
 }
 
-class ItemClickListener(val clickListener: (id: Int) -> Unit) {
+class HeaderClickListener(val clickListener: (id: Int) -> Unit) {
     fun onClick(item: View) = clickListener(item.id)
 }
 
+class ItemClickListener(val clickListener: (position: Int) -> Unit) {
+    fun onClick(position: Int) = clickListener(position)
+}
