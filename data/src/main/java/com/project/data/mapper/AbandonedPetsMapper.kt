@@ -9,7 +9,9 @@ object AbandonedPetsMapper {
         return abandonedPetsResponse.response.body.items.item.map {
             AbandonedPets(
                 happenDate = it.happenDt,
-                petImg = it.filename,
+                thumbnail = it.filename,
+                image = it.popfile,
+                happenPlace = it.happenPlace,
                 petType = it.kindCd,
                 petColor = it.colorCd,
                 petAge = it.age,
