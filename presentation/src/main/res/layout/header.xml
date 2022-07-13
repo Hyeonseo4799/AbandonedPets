@@ -31,9 +31,9 @@
                 android:gravity="center"
                 android:onClick="@{(view)->listener.onClick(view)}"
                 android:paddingLeft="15dp"
-                android:paddingTop="10dp"
+                android:paddingTop="5dp"
                 android:paddingRight="15dp"
-                android:paddingBottom="10dp"
+                android:paddingBottom="5dp"
                 android:text="@string/term"
                 android:textColor="@color/black" />
 
@@ -46,9 +46,9 @@
                 android:gravity="center"
                 android:onClick="@{(view)->listener.onClick(view)}"
                 android:paddingLeft="15dp"
-                android:paddingTop="10dp"
+                android:paddingTop="5dp"
                 android:paddingRight="15dp"
-                android:paddingBottom="10dp"
+                android:paddingBottom="5dp"
                 android:text="@string/btn_text_species"
                 android:textColor="@color/black" />
 
@@ -61,9 +61,9 @@
                 android:background="@drawable/bg_filter_btn"
                 android:onClick="@{(view)->listener.onClick(view)}"
                 android:paddingLeft="15dp"
-                android:paddingTop="10dp"
+                android:paddingTop="5dp"
                 android:paddingRight="15dp"
-                android:paddingBottom="10dp"
+                android:paddingBottom="5dp"
                 android:text="@string/btn_text_address"
                 android:textColor="@color/black" />
 
@@ -76,9 +76,9 @@
                 android:background="@drawable/bg_filter_btn"
                 android:onClick="@{(view)->listener.onClick(view)}"
                 android:paddingLeft="15dp"
-                android:paddingTop="10dp"
+                android:paddingTop="5dp"
                 android:paddingRight="15dp"
-                android:paddingBottom="10dp"
+                android:paddingBottom="5dp"
                 android:text="@string/btn_text_gender"
                 android:textColor="@color/black" />
 
@@ -91,9 +91,9 @@
                 android:background="@drawable/bg_filter_btn"
                 android:onClick="@{(view)->listener.onClick(view)}"
                 android:paddingLeft="15dp"
-                android:paddingTop="10dp"
+                android:paddingTop="5dp"
                 android:paddingRight="15dp"
-                android:paddingBottom="10dp"
+                android:paddingBottom="5dp"
                 android:text="@string/btn_text_neuter"
                 android:textColor="@color/black" />
         </LinearLayout>
