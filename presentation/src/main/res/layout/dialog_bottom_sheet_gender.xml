@@ -5,7 +5,7 @@
 
         <variable
             name="fragment"
-            type="com.project.abandonedpets.BottomSheetGender" />
+            type="com.project.abandonedpets.view.BottomSheetGender" />
     </data>
 
     <LinearLayout
