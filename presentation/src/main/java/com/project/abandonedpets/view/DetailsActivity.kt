@@ -38,12 +38,12 @@ class DetailsActivity : AppCompatActivity() {
         return number.replace("-", "")
     }
 
-    private fun calculateAge(birth: String): String {
+    private fun calculateAge(birthText: String): String {
         val now = System.currentTimeMillis()
         val date = Date(now)
         val sdf = SimpleDateFormat("yyyy")
         val year = sdf.format(date).toInt()
-        val birthYear = birth.replace("(년생)", "").toInt()
-        return "${year - birthYear + 1}살"
+        val birth = birthText.replace("(년생)", "").toInt()
+        return "${year - birth + 1}살"
     }
 }
