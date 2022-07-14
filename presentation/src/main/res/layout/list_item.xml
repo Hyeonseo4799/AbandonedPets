@@ -40,7 +40,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="UnusedAttribute"
-            tools:src="@drawable/images" />
+            tools:src="@drawable/app_icon" />
 
         <TextView
             android:id="@+id/title"
